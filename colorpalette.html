@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html><head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Credit: Code Pen made by Jon Rohan - Google Material Design Sass Color Palette</title>
+	<meta name="generator" content="Paletton.com">
+
+<style type="text/css">
+ 
+/* start of css stylesheet */
+/* add the main hex elements of your color palette here and match the name for your colors to the div container names found in the html body section  */
+  
+$baseColors: (
+  primary: #39A6E7,
+  secondary1: #4166C9,
+  secondary2: #17C59E,
+  complement: #FFA231,
+  notion: #505558,
+);
+
+@function colorMap($baseColors, $variations) {
+  $colors:();
+  
+  @each $color, $value in $baseColors {
+    $maxVar: 36;
+    $mid: $variations / 2;
+    $dist: $mid - 1;
+    $step: $maxVar / $dist;
+    
+    // lighten and darken
+    @for $i from 1 through $dist {
+      $percent: $maxVar - ($step * ($i - 1));
+      $darken: ($variations - $i) * 100;
+      $lighten: $i * 100;
+
+      $colors: map-merge($colors, (
+         #{$color}-#{$lighten}: lighten($value, $percent),
+         #{$color}-#{$darken}:  darken($value, $percent)
+      ));
+    }
+
+    // middle eg 500
+    $colors: map-merge($colors, (#{$color}-50: lighten($value, 38.7)));
+    $colors: map-merge($colors, (#{$color}-#{$variations/2*100}: $value));
+  }
+  @return $colors;
+}
+
+@each $color, $value in colorMap($baseColors, 10) {
+  .#{$color} { 
+    &::before {
+      content: '#{$value}';
+      font-family: monospace;
+      float: right;
+      text-transform: uppercase;
+    }
+    background-color: $value;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.swatches {
+  flex: auto;
+  margin: 5px;
+}
+
+.swatch-title {
+  padding: 5px;
+  margin-bottom: 3px;
+  text-transform: capitalize;
+  
+  h3 {
+    margin: 0 0 30px;
+    font-size: inherit;
+  }
+}
+
+.color-swatch:nth-child(n+7) {
+  color: #fff;
+}
+
+.color-swatch {
+  box-sizing: border-box;
+  min-width: 200px;
+  padding: 5px;
+  display: block;
+  font-weight: 400;
+}
+
+/* end of css stylesheet */
+</style>
+
+</head>
+<body style="background-color:191919;">
+
+%div.container
+  - ["primary","secondary1","secondary2","complement","notion"].each do |color|
+    %div.swatches
+      %div.swatch-title{:class => "#{color}-500"}
+        %h3 #{color}
+      %span.color-swatch{:class => "#{color}-50"} 50
+      - (1..9).each do |i|
+        %span.color-swatch{:class => "#{color}-#{i * 100}"} #{i * 100}
+
+
+</body>
+</html>
