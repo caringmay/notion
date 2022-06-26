@@ -1,109 +1,371 @@
 <!DOCTYPE html>
 <html><head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Credit: Code Pen made by Jon Rohan - Google Material Design Sass Color Palette</title>
-	<meta name="generator" content="Paletton.com">
 
 <style type="text/css">
  
 /* start of css stylesheet */
-/* add the main hex elements of your color palette here and match the name for your colors to the div container names found in the html body section  */
-  
-$baseColors: (
-  primary: #39A6E7,
-  secondary1: #4166C9,
-  secondary2: #17C59E,
-  complement: #FFA231,
-  notion: #505558,
-);
 
-@function colorMap($baseColors, $variations) {
-  $colors:();
-  
-  @each $color, $value in $baseColors {
-    $maxVar: 36;
-    $mid: $variations / 2;
-    $dist: $mid - 1;
-    $step: $maxVar / $dist;
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+
+    *, 
+    *::before,
+    *::after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        line-height: 1em;
+    }
+
+    body {
+        font-family: "Source Sans Pro";
+        background-color: #191919;
+    }
+
+
+    .container {
+        width: 780px;
+        margin: 0 auto;
+    }
+
+    .palete {
+        border-radius: 5px;
+        background-color: #2f3437;
+        -webkit-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+        -moz-box-shadow:    0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+        box-shadow:         0px 3px 0px 0px #454b4e;
+    }
+
+    .palete-color {
+      position: relative;
+    }
+    .palete-color,
+    .palete-color__square {
+        height: 30px;
+    }
+
+    .palete-color__square {
+        width: 50%;
+        float: left;
+    }
+    .palete-color__square:hover {
+      width: 100%;
+      position: absolute;
+    }
+
+    .palete-color__lighten {
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        border-top-left-radius: 5px;
+    }
+    .palete-color__square.palete-color__lighten:hover  {
+       -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-right-radius: 5px;
+    }
+    .palete-color__darken {
+        float: right;
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-right-radius: 5px;
+    }
+    .palete-color__square.palete-color__darken:hover {
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        border-top-left-radius: 5px;
+    }
+    .palete-color__content {
+        padding: 4px;
+        color: #D1D1D1;
+    }
+    .palete-color__name {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: lowercase;
+        color: #979A9B;
+    }
+    .palete-color__code {
+        font-size: 10px;
+        line-height: .8em;
+        text-transform: uppercase;
+    }
+
+    /* ############
+       STYLE
+       ############ */
+
+.list-palete {
+  width: 540px;
+  margin: 0 20px;
+  float: left;
+}
+.list-palete > .palete {
+    width: 20%;
+    margin: 2.5%;
+    float: left;
+}
+
+
+    /* ###########
+       THEME
+       ########### */
     
-    // lighten and darken
-    @for $i from 1 through $dist {
-      $percent: $maxVar - ($step * ($i - 1));
-      $darken: ($variations - $i) * 100;
-      $lighten: $i * 100;
-
-      $colors: map-merge($colors, (
-         #{$color}-#{$lighten}: lighten($value, $percent),
-         #{$color}-#{$darken}:  darken($value, $percent)
-      ));
+    /* 
+     * Grapefruit  
+     */
+    .palete-color--grapefruit > .palete-color__lighten {
+        background-color: #ed5565;
+    }
+    .palete-color--grapefruit > .palete-color__darken {
+        background-color: #da4453;
     }
 
-    // middle eg 500
-    $colors: map-merge($colors, (#{$color}-50: lighten($value, 38.7)));
-    $colors: map-merge($colors, (#{$color}-#{$variations/2*100}: $value));
-  }
-  @return $colors;
-}
-
-@each $color, $value in colorMap($baseColors, 10) {
-  .#{$color} { 
-    &::before {
-      content: '#{$value}';
-      font-family: monospace;
-      float: right;
-      text-transform: uppercase;
+    /* 
+     * Bittersweet  
+     */
+    .palete-color--bittersweet > .palete-color__lighten {
+        background-color: #fc6e51;
     }
-    background-color: $value;
-  }
-}
+    .palete-color--bittersweet > .palete-color__darken {
+        background-color: #e9573f;
+    }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.swatches {
-  flex: auto;
-  margin: 5px;
-}
+    /* 
+     * Sunflower  
+     */
+    .palete-color--sunflower > .palete-color__lighten {
+        background-color: #DDFF47;
+    }
+    .palete-color--sunflower > .palete-color__darken {
+        background-color: #C3B232;
+    }
 
-.swatch-title {
-  padding: 5px;
-  margin-bottom: 3px;
-  text-transform: capitalize;
-  
-  h3 {
-    margin: 0 0 30px;
-    font-size: inherit;
-  }
-}
+    /* 
+     * Grass  
+     */
+    .palete-color--grass > .palete-color__lighten {
+        background-color: #a0d468;
+    }
+    .palete-color--grass > .palete-color__darken {
+        background-color: #8cc152;
+    }
 
-.color-swatch:nth-child(n+7) {
-  color: #fff;
-}
+    /* 
+     * Mint  
+     */
+    .palete-color--mint > .palete-color__lighten {
+        background-color: #24B2A6;
+    }
+    .palete-color--mint > .palete-color__darken {
+        background-color: #387B68;
+    }
 
-.color-swatch {
-  box-sizing: border-box;
-  min-width: 200px;
-  padding: 5px;
-  display: block;
-  font-weight: 400;
-}
+    /* 
+     * Aqua  
+     */
+    .palete-color--aqua > .palete-color__lighten {
+        background-color: #299BD6;
+    }
+    .palete-color--aqua > .palete-color__darken {
+        background-color: #2c739a;
+    }
 
-/* end of css stylesheet */
+    /* 
+     * Blue Jeans 
+     */
+    .palete-color--blue-jeans > .palete-color__lighten {
+        background-color: #6676F2;
+    }
+    .palete-color--blue-jeans > .palete-color__darken {
+        background-color: #505CB9;
+    }
+
+    /* 
+     * Lavender  
+     */
+    .palete-color--lavender > .palete-color__lighten {
+        background-color: #9462FD;
+    }
+    .palete-color--lavender > .palete-color__darken {
+        background-color: #6C33C1;
+    }
+
+    /* 
+     * Pink Rose  
+     */
+    .palete-color--pink-rose > .palete-color__lighten {
+        background-color: #ec87c0;
+    }
+    .palete-color--pink-rose > .palete-color__darken {
+        background-color: #d770ad;
+    }
+
+    /* 
+     * Light Gray  
+     */
+    .palete-color--light-gray > .palete-color__lighten {
+        background-color: #D1D1D1;
+    }
+    .palete-color--light-gray > .palete-color__darken {
+        background-color: #979A9B;
+    }
+
+    /* 
+     * Medium Gray  
+     */
+    .palete-color--medium-gray > .palete-color__lighten {
+        background-color: #454b4e;
+    }
+    .palete-color--medium-gray > .palete-color__darken {
+        background-color: #2f3437;
+    }
+
+    /* 
+     * Dark Gray  
+     */
+    .palete-color--dark-gray > .palete-color__lighten {
+        background-color: #262A2C;
+    }
+    .palete-color--dark-gray > .palete-color__darken {
+        background-color: #1f2121;
+    }
+
+/* end of css stylesheet */	
+	
 </style>
-
 </head>
 <body style="background-color:191919;">
 
-%div.container
-  - ["primary","secondary1","secondary2","complement","notion"].each do |color|
-    %div.swatches
-      %div.swatch-title{:class => "#{color}-500"}
-        %h3 #{color}
-      %span.color-swatch{:class => "#{color}-50"} 50
-      - (1..9).each do |i|
-        %span.color-swatch{:class => "#{color}-#{i * 100}"} #{i * 100}
+<div class="container">
+        <ul class="list-palete">
+            
+<!– a box named grapefruit can be added here –>         
+<!– a box named bittersweet can be added here –>
+          
+<!- aqua ->   
+          
+            <li class="palete">
+                <div class="palete-color palete-color--aqua">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">aqua</h1>
+                    <span class="palete-color__code">299BD6</span>,
+                    <span class="palete-color__code">2c739a</span>
+                </div>
+            </li>
+          
+ <!- light-gray ->               
+        
+            <li class="palete">
+                <div class="palete-color palete-color--light-gray">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Light Gray</h1>
+                    <span class="palete-color__code">D1D1D1</span>,
+                    <span class="palete-color__code">979A9B</span>
+                </div>
+            </li>
+          
+ <!- medium gray -> 
+          
+            <li class="palete">
+                <div class="palete-color palete-color--medium-gray">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Medium Gray</h1>
+                    <span class="palete-color__code">454b4e</span>,
+                    <span class="palete-color__code">2f3437</span>
+                </div>
+            </li>
+          
+           <!- dark gray -> 
+          
+            <li class="palete">
+                <div class="palete-color palete-color--dark-gray">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Dark Gray</h1>
+                    <span class="palete-color__code">262A2C</span>,
+                    <span class="palete-color__code">1f2121</span>
+                </div>
+            </li>
+  
+            
+<!- a box named grass can be added here->
+          
+<!- mint ->         
+            
+            <li class="palete">
+                <div class="palete-color palete-color--mint">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Mint</h1>
+                    <span class="palete-color__code">24B2A6</span>,
+                    <span class="palete-color__code">387B68</span>
+                </div>
+            </li>
+          
+ 
+          
+ <!- blue jeans ->           
+          
+            <li class="palete">
+                <div class="palete-color palete-color--blue-jeans">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Blue Jeans</h1>
+                    <span class="palete-color__code">6676F2</span>,
+                    <span class="palete-color__code">505CB9</span>
+                </div>
+            </li>
+          
+ <!- lavender ->           
+          
+            <li class="palete">
+                <div class="palete-color palete-color--lavender">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Lavender</h1>
+                    <span class="palete-color__code">9462FD</span>,
+                    <span class="palete-color__code">6C33C1</span>
+                </div>
+
+ <!- sunflower -> 
+            
+            <li class="palete">
+                <div class="palete-color palete-color--sunflower">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Sunflower</h1>
+                    <span class="palete-color__code">ffce54</span>,
+                    <span class="palete-color__code">fcbb42</span>
+                </div>
+            </li>
+          
+          </div>
+
 
 
 </body>
