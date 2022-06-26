@@ -7,21 +7,17 @@
     <!- go to link below and press (Board) ->
           <!- https://developers.pinterest.com/tools/widget-builder/? ->
     <!- paste your url ->
-    <!- image width: 150, width: 1000, height: 1200 ->
+    <!- under the custom settings, set image width: 150, width: 1000, height: 1200 ->
           <!- (those are my personal settings but feel free to go ham here) ->
     <!- paste the two snippets created on that page into the html I have marked on the sheet ->
-    <!- paste the following under the CSS section ->
     <!- commit the changes and congrats! You have a new url you can embed into your notion page ->
           <!- https://username.github.io/file/whatyounamedthisdoc.html ->
     
-    
+<!- don't mess with the css or you will have a bad time... ->        
 <style type="text/css">
 body {
   background-color: #191919;
 }
-
-/* copy/paste the css info from codepen below this line */
-
   body > span {
     width: 100% !important;
     height: 100% !important;
@@ -30,14 +26,9 @@ body {
   span[class*="_bd"] {
     height: 100% !important;
   }
+</style></head><body>
 
-/* copy/paste the css info from codepen above this line */
-
-</style>
-</head>
-<body>
-
-<!- copy/paste the html info from codepen below this line ->
+<!- copy/paste the html info beelow this line; include both lines ->
 
     <a data-pin-do="embedBoard" data-pin-board-width="1000" data-pin-scale-height="1200" data-pin-scale-width="150" href="https://www.pinterest.com/caringmay/recipies/"></a>
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
