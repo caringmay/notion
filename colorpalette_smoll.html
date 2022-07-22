@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html><head>
+
+<style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+
+    *, 
+    *::before,
+    *::after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        line-height: 1em;
+    }
+
+    body {
+        font-family: "Source Sans Pro";
+        background-color: #191919;
+    }
+
+
+
+
+    .palete {
+        border-radius: 5px;
+        background-color: #2f3437;
+        -webkit-box-shadow: 0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+        -moz-box-shadow:    0px 3px 0px 0px rgba(226, 228, 231, 0.75);
+        box-shadow:         0px 3px 0px 0px #454b4e;
+    }
+
+    .palete-color {
+      position: relative;
+    }
+    .palete-color,
+    .palete-color__square {
+        height: 25px;
+    }
+
+    .palete-color__square {
+        width: 50%;
+        float: left;
+    }
+    .palete-color__square:hover {
+      width: 100%;
+      position: absolute;
+    }
+
+    .palete-color__lighten {
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        border-top-left-radius: 5px;
+    }
+    .palete-color__square.palete-color__lighten:hover  {
+       -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-right-radius: 5px;
+    }
+    .palete-color__darken {
+        float: right;
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-right-radius: 5px;
+    }
+    .palete-color__square.palete-color__darken:hover {
+        -webkit-border-top-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        border-top-left-radius: 5px;
+    }
+    .palete-color__content {
+        padding: 5px;
+        color: #D1D1D1;
+    }
+    .palete-color__name {
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: lowercase;
+        color: #979A9B;
+    }
+    .palete-color__code {
+        font-size: 12px;
+        font-weight: 100;
+        line-height: 0.8em;
+        text-transform: uppercase;
+    }
+
+    /* ############
+       STYLE
+       ############ */
+
+.list-palete {
+  width: 500px;
+  margin: 0 .2em;
+  float: center;
+}
+.list-palete > .palete {
+    width: 25%;
+    margin: 2.2%;
+    float: left;
+}
+
+
+    /* ###########
+       THEME
+       ########### */
+    
+    /* 
+     * Grapefruit  
+     */
+    .palete-color--grapefruit > .palete-color__lighten {
+        background-color: #ed5565;
+    }
+    .palete-color--grapefruit > .palete-color__darken {
+        background-color: #da4453;
+    }
+
+    /* 
+     * Bittersweet  
+     */
+    .palete-color--bittersweet > .palete-color__lighten {
+        background-color: #fc6e51;
+    }
+    .palete-color--bittersweet > .palete-color__darken {
+        background-color: #e9573f;
+    }
+
+
+    /* 
+     * warms / sunflower  
+     */
+    .palete-color--sunflower > .palete-color__lighten {
+        background-color: #fed652;
+    }
+    .palete-color--sunflower > .palete-color__darken {
+        background-color: #3ef192;
+    }
+
+    /* 
+     * Grass  
+     */
+    .palete-color--grass > .palete-color__lighten {
+        background-color: #a0d468;
+    }
+    .palete-color--grass > .palete-color__darken {
+        background-color: #8cc152;
+    }
+
+    /* 
+     * primary / mint  
+     */
+    .palete-color--mint > .palete-color__lighten {
+        background-color: #80EDE1;
+    }
+    .palete-color--mint > .palete-color__darken {
+        background-color: #4db5ff;
+    }
+
+    /* 
+     * font & back / aqua  
+     */
+    .palete-color--aqua > .palete-color__lighten {
+        background-color: #cfd8dc;
+    }
+    .palete-color--aqua > .palete-color__darken {
+        background-color: #191919;
+    }
+
+    /* 
+     * Blue Jeans 
+     */
+    .palete-color--blue-jeans > .palete-color__lighten {
+        background-color: #6676F2;
+    }
+    .palete-color--blue-jeans > .palete-color__darken {
+        background-color: #505CB9;
+    }
+
+    /* 
+     * cools / lavender
+     */
+    .palete-color--lavender > .palete-color__lighten {
+        background-color: #9869f7;
+    }
+    .palete-color--lavender > .palete-color__darken {
+        background-color: #f744df;
+    }
+
+    /* 
+     * Pink Rose  
+     */
+    .palete-color--pink-rose > .palete-color__lighten {
+        background-color: #ec87c0;
+    }
+    .palete-color--pink-rose > .palete-color__darken {
+        background-color: #d770ad;
+    }
+
+    /* 
+     * Light Gray  
+     */
+    .palete-color--light-gray > .palete-color__lighten {
+        background-color: #D1D1D1;
+    }
+    .palete-color--light-gray > .palete-color__darken {
+        background-color: #979A9B;
+    }
+
+    /* 
+     * Medium Gray  
+     */
+    .palete-color--medium-gray > .palete-color__lighten {
+        background-color: #454b4e;
+    }
+    .palete-color--medium-gray > .palete-color__darken {
+        background-color: #2f3437;
+    }
+
+    /* 
+     * Dark Gray  
+     */
+    .palete-color--dark-gray > .palete-color__lighten {
+        background-color: #262A2C;
+    }
+    .palete-color--dark-gray > .palete-color__darken {
+        background-color: #1f2121;
+}
+	
+	
+/* end of css stylesheet */	
+	
+	
+</style>
+</head>
+<body style="background-color:191919;">
+
+
+<div class="container">
+        <ul class="list-palete">
+            
+<!– a box named grapefruit can be added here –>         
+<!– a box named bittersweet can be added here –>
+<!– a box named blue-jeans can be added here –>	
+<!– a box named light-gray can be added here –>	
+<!– a box named grass can be added here –>	
+          
+<!- font & back / aqua ->   
+          
+            <li class="palete">
+                <div class="palete-color palete-color--aqua">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Font & Back</h1>
+                    <span class="palete-color__code">'cfd8dc'</span>,
+                    <span class="palete-color__code">'191919'</span>
+                </div>
+            </li>
+          
+
+          
+ <!- medium gray -> 
+          
+            <li class="palete">
+                <div class="palete-color palete-color--medium-gray">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Neutral</h1>
+                    <span class="palete-color__code">'454b4e'</span>,
+                    <span class="palete-color__code">'2f3437'</span>
+                </div>
+            </li>
+          
+<!- dark gray -> 
+          
+            <li class="palete">
+                <div class="palete-color palete-color--dark-gray">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Neutral Dark</h1>
+                    <span class="palete-color__code">'262A2C'</span>,
+                    <span class="palete-color__code">'1f2121'</span>
+                </div>
+            </li>
+
+          
+<!- primary / mint ->         
+            
+            <li class="palete">
+                <div class="palete-color palete-color--mint">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">Primary</h1>
+                    <span class="palete-color__code">'80EDE1'</span>,
+                    <span class="palete-color__code">'4db5ff'</span>
+                </div>
+            </li>
+          
+ <!- cools / lavender ->           
+          
+            <li class="palete">
+                <div class="palete-color palete-color--lavender">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">cools</h1>
+                    <span class="palete-color__code">'B895FE'</span>,
+                    <span class="palete-color__code">'ff8de4'</span>
+                </div>
+
+ <!- warms / sunflower -> 
+            
+            <li class="palete">
+                <div class="palete-color palete-color--sunflower">
+                    <div class="palete-color__square palete-color__lighten"></div>
+                    <div class="palete-color__square palete-color__darken"></div>
+                </div>
+                <div class="palete-color__content">
+                    <h1 class="palete-color__name">warms</h1>
+                    <span class="palete-color__code">'fed652'</span>,
+                    <span class="palete-color__code">'3ef192'</span>
+                </div>
+            </li>
+          
+          </div>
+
+
+
+
+</body>
+</html>
